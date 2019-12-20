@@ -1,0 +1,28 @@
+{
+  "name": "parker714/yii2-a",
+  "description": "yii2 extension apollo",
+  "keywords": [
+    "yii2",
+    "apollo"
+  ],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "pb",
+      "email": "parker714@foxmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "^2.0.0",
+    "multilinguals/apollo-client": "^0.1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "parker714\\yii2a\\": ""
+    }
+  },
+  "extra": {
+    "bootstrap": "parker714\\yii2a\\Bootstrap"
+  }
+}
