@@ -6,7 +6,7 @@ This extension provides a [`Apollo`](https://github.com/ctripcorp/apollo) fixtur
 
 For license information check the [LICENSE](LICENSE.md)-file.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/parker714/yii2-a.svg)](https://packagist.org/packages/parker714/yii2-a)
+![Latest Stable Version](https://img.shields.io/packagist/v/parker714/yii2-a)
 [![GitHub license](https://img.shields.io/github/license/parker714/yii2-a)](https://github.com/parker714/yii2-a/blob/master/LICENSE)
 
 Installation
