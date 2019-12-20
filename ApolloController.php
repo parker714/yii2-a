@@ -51,16 +51,25 @@ class ApolloController extends Controller
     public $saveDir;
 
     /**
+     * apollo client
+     *
+     * @var ApolloClient
+     */
+    private $client;
+
+    /**
      * init apollo config file save dir
      */
     public function init()
     {
         parent::init();
         if ($this->saveDir === null) {
-            $this->saveDir = Yii::$app->getBasePath();
+            $this->saveDir = Yii::$app->getBasePath() . '/config/';
         } else {
             $this->saveDir = Yii::getAlias($this->saveDir);
         }
+        $this->client           = new ApolloClient($this->url, $this->appID, $this->notifications);
+        $this->client->save_dir = $this->saveDir;
     }
 
     /**
@@ -68,10 +77,9 @@ class ApolloController extends Controller
      *
      * @param $namespaceName
      */
-    public function actionPull($namespaceName)
+    public function actionPull($namespaceName = 'application')
     {
-        $client = new ApolloClient($this->url, $this->appID, $this->notifications);
-        if ($client->pullConfig($namespaceName)) {
+        if ($this->client->pullConfig($namespaceName)) {
             $this->stdout("apollo: pull succeed");
         } else {
             $this->stderr("apollo: pull failed");
@@ -83,10 +91,9 @@ class ApolloController extends Controller
      */
     public function actionWatch()
     {
-        $client = new ApolloClient($this->url, $this->appID, $this->notifications);
         do {
-            $error = $client->start();
+            $error = $this->client->start();
             if ($error) $this->stderr("apollo: watch err $error");
-        } while ($error && $client);
+        } while ($error && $this->client);
     }
 }
