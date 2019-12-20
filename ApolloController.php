@@ -34,14 +34,14 @@ class ApolloController extends Controller
      *
      * @var string
      */
-    public $clientIp = '127.0.0.1';
+    public $clientIp;
 
     /**
      * apollo notifications
      *
      * @var array
      */
-    public $notifications = [];
+    public $notifications = ['application'];
 
     /**
      * apollo config save dir
@@ -63,6 +63,9 @@ class ApolloController extends Controller
     public function init()
     {
         parent::init();
+        if ($this->clientIp === null) {
+            $this->clientIp = $_SERVER['SERVER_ADDR'] ?? '';
+        }
         if ($this->saveDir === null) {
             $this->saveDir = Yii::$app->getBasePath() . '/config/';
         } else {
@@ -94,6 +97,6 @@ class ApolloController extends Controller
         do {
             $error = $this->client->start();
             if ($error) $this->stderr("apollo: watch err $error");
-        } while ($error && $this->client);
+        } while (!$error && $this->client);
     }
 }
