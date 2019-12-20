@@ -28,9 +28,10 @@ To use this extension,  simply add the following code in your application config
 ```php
 'controllerMap' => [
     'apollo' => [
-        'class' => 'parker714\yii2a\ApolloController',
-        'url'   => 'http://127.0.0.1',
-        'appID' => 'test',
+        'class'   => 'parker714\yii2a\ApolloController',
+        'url'     => 'http://127.0.0.1',
+        'appID'   => 'test',
+        'saveDir' => '@app/config',
     ],
 ],
 ```
